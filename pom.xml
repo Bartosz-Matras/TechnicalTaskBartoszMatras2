@@ -45,28 +45,29 @@
 
         <build>
             <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.1.0</version>
-                    <configuration>
+                 <plugin>
+                      <artifactId>maven-assembly-plugin</artifactId>
+                      <configuration>
                         <archive>
-                            <manifest>
-                                <addClasspath>true</addClasspath>
-                                <mainClass>com.Main</mainClass>
-                            </manifest>
+                          <manifest>
+                            <mainClass>com.ocadogroup.Main</mainClass>
+                          </manifest>
                         </archive>
-                    </configuration>
-                </plugin>
-            </plugins>
-            <resources>
-                <resource>
-                    <directory>src/main/resources</directory>
-                    <includes>
-                        <include>log4j.properties</include>
-                    </includes>
-                </resource>
-            </resources>
-        </build>
+                        <descriptorRefs>
+                          <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                      </configuration>
+                      <executions>
+                        <execution>
+                          <id>make-assembly</id>
+                          <phase>package</phase>
+                          <goals>
+                            <goal>single</goal>
+                          </goals>
+                        </execution>
+                      </executions>
+                    </plugin>
+                </plugins>
+            </build>
     
 </project>
